@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace mod1_ativ1
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        readonly IConfiguration _config;
+        public Startup()
+        {
+            var diretorioRaizProjeto = Directory.GetCurrentDirectory();
+            var construtorLeitura = new ConfigurationBuilder()
+                .SetBasePath(diretorioRaizProjeto)
+                .AddIniFile("data.ini");
+
+            _config = construtorLeitura.Build();
+        }
         public void ConfigureServices(IServiceCollection services)
         {
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -27,7 +36,10 @@ namespace mod1_ativ1
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                foreach (var item in _config.AsEnumerable())
+                {
+                    await context.Response.WriteAsync($"{item.Key} {item.Value}\n");
+                }
             });
         }
     }
