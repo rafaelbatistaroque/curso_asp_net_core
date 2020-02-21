@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mod1_ativ1", "mod1_ativ1\mod1_ativ1.csproj", "{ADE5FE48-5365-4E95-A3CB-FCFCBCBC162B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mod1_ativ1", "mod1_ativ1\mod1_ativ1.csproj", "{ADE5FE48-5365-4E95-A3CB-FCFCBCBC162B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mod1_ativ2", "mod1_ativ2\mod1_ativ2.csproj", "{8AFA1624-9FDB-4A43-8252-D0D92C917F52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mod1_ativ2", "mod1_ativ2\mod1_ativ2.csproj", "{8AFA1624-9FDB-4A43-8252-D0D92C917F52}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mod2_Ativ1", "mod2_mvc\mod2_Ativ1.csproj", "{C0EFE432-FE33-49B3-945D-3F53BDCAFE0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8AFA1624-9FDB-4A43-8252-D0D92C917F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AFA1624-9FDB-4A43-8252-D0D92C917F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AFA1624-9FDB-4A43-8252-D0D92C917F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EFE432-FE33-49B3-945D-3F53BDCAFE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0EFE432-FE33-49B3-945D-3F53BDCAFE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0EFE432-FE33-49B3-945D-3F53BDCAFE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0EFE432-FE33-49B3-945D-3F53BDCAFE0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
