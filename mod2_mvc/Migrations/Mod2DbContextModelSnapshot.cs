@@ -7,7 +7,7 @@ using mod2_mvc.BD;
 
 namespace mod2_Ativ1.Migrations
 {
-    [DbContext(typeof(Mod2DbContext))]
+    [DbContext(typeof(DataContext))]
     partial class Mod2DbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

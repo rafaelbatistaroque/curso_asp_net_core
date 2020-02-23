@@ -1,30 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using mod2_mvc.BD;
+using mod3_ativ1.BD;
+using mod3_ativ1.Repositories;
+using mod3_ativ1.Repositories.Interfaces;
 
-namespace mod2_mvc
+namespace mod3_ativ1
 {
     public class Startup
     {
-        public IConfiguration Config { get; }
         public Startup(IConfiguration configuration)
         {
-            Config = configuration;
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(op => op.UseSqlServer(Config.GetConnectionString("strConnDb")));
-            services.AddScoped<DataContext, DataContext>();
+            services.AddScoped<AlunoRepositorio>();
             services.AddControllersWithViews();
+            services.AddDbContext<EscolaDataContext>(op =>
+                op.UseSqlServer(Configuration.GetConnectionString("EscolaDataContext")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,6 +36,7 @@ namespace mod2_mvc
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

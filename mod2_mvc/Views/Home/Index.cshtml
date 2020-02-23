@@ -2,9 +2,7 @@
     ViewData["Title"] = "Lista de Países";
 }
 
-@model Pais
-
 <div class="text-center">
     <h1 class="display-4">@ViewData["Title"]</h1>
-    <select asp-for="Id" asp-items="@(new SelectList(@ViewBag.ListaPaises,"Id", "Nome") )"></select>
+    <select asp-items="@(new SelectList(@ViewBag.ListaPaises,"Id", "Nome") )"></select>
 </div>

@@ -8,7 +8,7 @@ using mod2_mvc.BD;
 
 namespace mod2_Ativ1.Migrations
 {
-    [DbContext(typeof(Mod2DbContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20200221184007_Inicial")]
     partial class Inicial
     {

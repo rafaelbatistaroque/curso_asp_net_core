@@ -1,16 +1,25 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using mod2_mvc.BD;
-using mod2_mvc.Models;
+using Microsoft.Extensions.Logging;
+using mod3_ativ1.Models;
 
-namespace mod2_mvc.Controllers
+namespace mod3_ativ1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index([FromServices] DataContext context)
-        { 
-            ViewBag.ListaPaises = context.Paises.ToList();
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
             return View();
         }
 
