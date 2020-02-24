@@ -9,6 +9,9 @@ namespace mod3_ativ1.Repositories.Interfaces
     public interface IAlunoRepositorio
     {
         Task<IEnumerable<Aluno>> ObterListaDeAlunosNoBD();
-        Task DeletarAlunoNoBD(int? Id);
+        Task<bool> DeletarAlunoNoBD(int id);
+        Task AtualizarAlunoNoBD(Aluno alunoAtualizado);
+        Task AdicionarAlunoNoBD(Aluno novoAluno);
+        Task<Aluno> ObterAlunoPorId(int id);
     }
 }

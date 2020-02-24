@@ -14,16 +14,42 @@ namespace mod3_ativ1.Repositories
         public AlunoRepositorio(EscolaDataContext _escola) => _dbEscola = _escola;
 
         [HttpPost]
-        public async Task DeletarAlunoNoBD(int? Id)
+        public async Task AdicionarAlunoNoBD(Aluno novoAluno)
         {
-            var alunoParaDeletar = await _dbEscola.Alunos.FindAsync(Id);
-            _dbEscola.Alunos.Remove(alunoParaDeletar);
+            _dbEscola.Add(novoAluno);
             await _dbEscola.SaveChangesAsync();
         }
 
+        [HttpPut]
+        public async Task AtualizarAlunoNoBD(Aluno alunoAtualizado)
+        {
+            _dbEscola.Entry(alunoAtualizado).State = EntityState.Modified;
+            await _dbEscola.SaveChangesAsync();
+        }
+
+        [HttpDelete]
+        public async Task<bool> DeletarAlunoNoBD(int id)
+        {
+            var alunoProcurado = await _dbEscola.Alunos.FindAsync(id);
+            if (alunoProcurado == null) return false;
+            else
+            {
+                _dbEscola.Entry(alunoProcurado).State = EntityState.Deleted;
+                await _dbEscola.SaveChangesAsync();
+            }
+            return true;
+        }
+        [HttpGet]
+        public async Task<Aluno> ObterAlunoPorId(int id)
+        {
+            return await _dbEscola.Alunos.SingleOrDefaultAsync(x => x.Id.Equals(id));
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<Aluno>> ObterListaDeAlunosNoBD()
         {
             return await _dbEscola.Alunos.ToListAsync();
         }
+
     }
 }
